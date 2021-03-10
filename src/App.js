@@ -18,10 +18,35 @@ This      is a second paragraph with extraneous whitespace.`);
   };
 
   const transformText = input => {
-    let output = input;
-    /*
-    your work goes here!
-    */
+
+    // split by paragraph and remove extra blank lines
+
+    let formattedParagraphs = []
+
+    let paragraphArr = input.split(/\n\n/)
+
+    for(let i = 0; i < paragraphArr.length; i++){
+      if(paragraphArr[i] === "") continue;
+      formattedParagraphs.push(paragraphArr[i].replace(/(\r\n|\n|\r)/gm, " "))
+    }
+
+    formattedParagraphs = formattedParagraphs.join('\n\n')
+
+    // remove extra white spaces in between words
+
+    let formattedWords = [];
+
+    let wordsArr = formattedParagraphs.split(" ")
+
+    for(let i = 0; i < wordsArr.length; i++){
+      if(wordsArr[i] === "") continue;
+      formattedWords.push(wordsArr[i])
+    }
+
+    formattedWords = formattedWords.join(" ")
+
+    let output = formattedWords
+
     setTextOutput(output);
   }
   
